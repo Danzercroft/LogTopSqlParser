@@ -1,0 +1,25 @@
+<?php
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
+require 'config/config.php';
+require __DIR__ . '/src/vendor/autoload.php';
+
+use DB\DataBase;
+use GoogleApi\GoogleApi;
+
+$db = new DataBase();
+try{
+	switch ($argv[1]) {
+		case 'log:queries':
+			(new \Commands\FirstCommand())->handle();
+			echo 'Логирование успешно завершено!';
+			break;
+		case 'create:message':
+			(new \Commands\SecondCommand($argv[2]))->handle();
+			break;
+		default:
+			echo 'Unknown command';
+			break;
+	}
+} catch (\Exception $e) {
+	echo 'Exception thrown: ' . $e->getMessage();
+}
