@@ -15,7 +15,7 @@ const AUTH_CONFIG_FILE = 'credentials.json';
 const SPREAD_SHEET_ID = '1wy5uEKKBp7xyZySY1u2EKzJ3_V61hQV1yRW8Fsq9jg4';
 
 const MIN3_QUERY_LIST = 'Idle in transaction';
-const MIN10_QUERY_LIST = 'test1';
+const MIN10_QUERY_LIST = 'Long execute';
 
 const PG_TERMINATE_BACKEND = 0;
 const NOW = 1;

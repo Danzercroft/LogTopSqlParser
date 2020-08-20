@@ -24,13 +24,15 @@ class GoogleApi {
 	public function insertQuery($query, $type = 0) {
 		$service = $this->getService();
 		$range = $type === 0
-			? MIN3_QUERY_LIST.'!A:E'
-			: MIN10_QUERY_LIST.'!B:E';
+			? MIN3_QUERY_LIST.'!A:F'
+			: MIN10_QUERY_LIST.'!A:F';
 		$values = [
 			[
 				"",
-				(new Carbon($query->item(QUERY_START)->nodeValue))
+				Carbon::parse($query->item(QUERY_START)->nodeValue)
 					->format('Y-m-d'),
+				Carbon::parse($query->item(QUERY_START)->nodeValue)
+					->format('H:i:s'),
 				$query->item(QUERY)->nodeValue,
 				$query->item(PID)->nodeValue,
 				$query->item(USENAME)->nodeValue
