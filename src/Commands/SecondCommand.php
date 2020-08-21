@@ -49,7 +49,7 @@ class SecondCommand extends Command {
 	private function removeOneHour($time) {
 		return Carbon::parse($time)
 			->addMinutes(-50)
-			->format('d-m H:i');
+			->format('H:i');
 	}
 
 	private function sendMessage(\DOMNodeList $query, $queryTime) {
