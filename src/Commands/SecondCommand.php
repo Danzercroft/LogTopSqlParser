@@ -49,14 +49,21 @@ class SecondCommand extends Command {
 	private function removeOneHour($time) {
 		return Carbon::parse($time)
 			->addMinutes(-50)
-			->format('d-m H:i:s');
+			->format('H:i');
 	}
 
 	private function sendMessage(\DOMNodeList $query, $queryTime) {
 		echo 'Прошу предоставить логи запросов по pid '
 			. $query->item(PID)->nodeValue . ' с '
 			. $this->removeOneHour($queryTime)
-			. ' по '. Carbon::parse($queryTime)->format('d-m H:i:s')
+			. ' по '. $this->roundTime($queryTime)->format('H:i')
 			. "\n";
+	}
+
+	private function roundTime($queryTime) {
+		return Carbon::parse($queryTime)
+			->addSeconds(
+				60 - Carbon::parse($queryTime)->format('s')
+			);
 	}
 }
