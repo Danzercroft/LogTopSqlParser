@@ -24,8 +24,8 @@ class GoogleApi {
 	public function insertQuery($query, $type = 0) {
 		$service = $this->getService();
 		$range = $type === 0
-			? MIN3_QUERY_LIST.'!A:F'
-			: MIN10_QUERY_LIST.'!A:F';
+			? MIN3_QUERY_LIST.'!A:G'
+			: MIN10_QUERY_LIST.'!A:G';
 		$values = [
 			[
 				"",
@@ -35,7 +35,8 @@ class GoogleApi {
 					->format('H:i:s'),
 				$query->item(QUERY)->nodeValue,
 				$query->item(PID)->nodeValue,
-				$query->item(USENAME)->nodeValue
+				$query->item(USENAME)->nodeValue,
+				$query->item(CLIENT_ADDR)->nodeValue
 			]
 		];
 		$body = new Google_Service_Sheets_ValueRange([

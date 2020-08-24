@@ -49,6 +49,7 @@ class FirstCommand extends Command {
 				)
 				->setUser($query->item(USENAME)->nodeValue)
 				->setQueryHash(md5($query->item(QUERY)->nodeValue))
+				->setIp($query->item(CLIENT_ADDR)->nodeValue)
 				->save();
 		}
 	}
@@ -86,6 +87,7 @@ class FirstCommand extends Command {
 				)
 				->setUser($query->item(USENAME)->nodeValue)
 				->setQueryHash(md5($query->item(QUERY)->nodeValue))
+				->setIp($query->item(CLIENT_ADDR)->nodeValue)
 				->save();
 		}
 	}
